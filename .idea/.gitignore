@@ -1,0 +1,17 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/tasks.xml
+/dictionaries
+/vcs.xml
+/jsLibraryMappings.xml
+/dataSources.ids
+/dataSources.xml
+/dataSources.local.xml
+/sqlDataSources.xml
+/dynamic.xml
+/uiDesigner.xml
+
+# Gradle:
+/gradle.xml
+/libraries
