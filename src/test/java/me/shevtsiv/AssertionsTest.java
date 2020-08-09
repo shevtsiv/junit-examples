@@ -1,12 +1,16 @@
 package me.shevtsiv;
 
+import me.shevtsiv.extensions.SuppressExceptionExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.opentest4j.AssertionFailedError;
 import org.opentest4j.MultipleFailuresError;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -196,5 +200,12 @@ public class AssertionsTest {
                 // if the timeout condition is already failed.
                 () -> assertTimeoutPreemptively(Duration.ofMillis(1000), () -> Thread.sleep(10000))
         );
+    }
+
+    @Test
+    @ExtendWith(SuppressExceptionExtension.class)
+    @Timeout(value = 10, unit = TimeUnit.MILLISECONDS) // Fails preemptively
+    public void testAnnotationTimeout() throws InterruptedException {
+        Thread.sleep(10_000_000);
     }
 }
